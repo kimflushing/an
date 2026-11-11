@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY WEBSITE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #f3e5e5;
+    --darkpink: #b99498;
+    --green: #a9ad94;
+    --cream: #fffdf8;
+    --text: #77716b;
+    --line: #d8d0c3;
+}
+
+body {
+    margin: 0;
+    padding: 35px 12px;
+    background: #fceeee;
+    color: var(--text);
+    font-family: 'Gowun Batang', serif;
+    font-size: 13px;
+}
+
+/* MAIN */
+
+.site {
+    max-width: 900px;
+    margin: auto;
+    padding: 9px;
+    background: repeating-linear-gradient(
+        45deg,
+        #d5d8b9 0px,
+        #d5d8b9 3px,
+        #f5f1df 3px,
+        #f5f1df 6px
+    );
+    border: 1px solid #aaa88f;
+    outline: 2px dotted white;
+    outline-offset: 3px;
+}
+
+.inner {
+    background: var(--cream);
+    border: 1px solid #b8b09f;
+    padding: 6px;
+}
+
+/* TOP */
+
+.top-message {
+    border: 1px solid #c6bcae;
+    padding: 9px;
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+    letter-spacing: 1px;
+    font-size: 12px;
+    background: #fffdfa;
+    margin-bottom: 8px;
+}
+
+.top-message span {
+    color: var(--green);
+    margin: 0 8px;
+}
+
+/* LAYOUT */
+
+.layout {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 8px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    min-width: 0;
+}
+
+.side-title {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 19px;
+    font-style: italic;
+    text-align: center;
+    margin: 5px 0 8px;
+    color: #8f8280;
+}
+
+.side-box {
+    border: 1px solid #bcb5a8;
+    margin-bottom: 12px;
+    background: white;
+}
+
+.side-box-title {
+    background: #f4eee8;
+    border-bottom: 1px dotted #c4b7aa;
+    padding: 7px;
+    color: #a18d80;
+    font-size: 11px;
+}
+
+.side-box-content {
+    padding: 7px;
+}
+
+.menu-btn {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px dotted #c9c2b8;
+    background: linear-gradient(to bottom, #fffdf8, #f4f1e8);
+    padding: 9px 8px;
+    text-align: left;
+    color: #81796f;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.menu-btn:last-child {
+    border-bottom: none;
+}
+
+.menu-btn:hover,
+.menu-btn.active {
+    background: #f8e9e9;
+    color: #bd8f98;
+    padding-left: 14px;
+}
+
+.menu-btn::before {
+    content: "✿ ";
+    color: #b0b18e;
+}
+
+/* MAIN */
+
+.main {
+    min-width: 0;
+}
+
+/* BANNER */
+
+.banner {
+    height: 175px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #c9c0b4;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 38px,
+            rgba(255,255,255,.4) 39px,
+            rgba(255,255,255,.4) 41px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            #f4e8e5 0px,
+            #f4e8e5 38px,
+            #fffaf5 39px,
+            #fffaf5 41px
+        );
+
+    display: flex;
+    align-items: flex-end;
+    padding: 13px;
+}
+
+.banner-title {
+    color: #a58e89;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 26px;
+    font-style: italic;
+}
+
+/* CLOCK */
+
+.clock {
+    margin-top: 8px;
+    border: 1px solid #c7bdae;
+    padding: 7px;
+    text-align: center;
+    background: #fffdf9;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* PAGES */
+
+.page {
+    display: none;
+    margin-top: 12px;
+}
+
+.page.active {
+    display: block;
+    animation: fadeIn .65s ease both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SECTION */
+
+.section-title {
+    background: #edf0e9;
+    border: 1px solid #d0d4c4;
+    padding: 8px 10px;
+    text-align: right;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #8e9280;
+    margin-bottom: 10px;
+}
+
+.section-title::before {
+    content: "✿";
+    float: left;
+    color: #a9ae91;
+}
+
+/* TEXT */
+
+.text-box {
+    border: 1px dotted #c8beb2;
+    background: #fffefa;
+    padding: 13px;
+    margin-bottom: 11px;
+    line-height: 2.1;
+    text-align: justify;
+    font-size: 12px;
+}
+
+.text-box p {
+    margin: 0 0 15px;
+}
+
+.text-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* SUBTITLE */
+
+.sub-title {
+    background: #f6eeee;
+    border: 1px dotted #d8c6c6;
+    padding: 7px 9px;
+    color: #a88688;
+    font-family: 'Nanum Myeongjo', serif;
+    font-style: italic;
+    margin: 14px 0 8px;
+}
+
+/* NG */
+
+.ng-item {
+    padding: 7px 4px;
+    border-bottom: 1px dotted #ddd3cc;
+}
+
+.ng-item:last-child {
+    border-bottom: none;
+}
+
+.ng-item::before {
+    content: "✧ ";
+    color: #c39da0;
+}
+
+/* CONSIDERATION */
+
+.consider-item {
+    padding: 13px;
+    margin-bottom: 8px;
+    background: #f8f3ec;
+    border: 1px dotted #c9b9aa;
+    color: #887b70;
+    font-size: 13px;
+}
+
+.consider-item::before {
+    content: "♡ ";
+    color: #c899a0;
+}
+
+/* HOME DECORATION */
+
+.home-decoration {
+    text-align: center;
+    color: #b0ad91;
+    letter-spacing: 7px;
+    padding: 20px;
+    font-size: 15px;
+}
+
+/* FOOTER */
+
+.footer {
+    margin-top: 10px;
+    padding: 9px;
+    border-top: 1px dotted #c9bdae;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #a49b8d;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px 8px;
+    }
+
+    .site {
+        padding: 5px;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .side-title {
+        display: none;
+    }
+
+    .side-box {
+        margin-bottom: 8px;
+    }
+
+    .side-box-content {
+        display: flex;
+        padding: 3px;
+    }
+
+    .menu-btn {
+        flex: 1;
+        text-align: center;
+        padding: 9px 2px;
+        font-size: 11px;
+        border-bottom: none;
+        border-right: 1px dotted #c9c2b8;
+    }
+
+    .menu-btn:last-child {
+        border-right: none;
+    }
+
+    .menu-btn:hover,
+    .menu-btn.active {
+        padding-left: 2px;
+    }
+
+    .banner {
+        height: 130px;
+    }
+
+    .banner-title {
+        font-size: 22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="site">
+<div class="inner">
+
+    <div class="top-message">
+        <span>❀</span>
+        welcome to my website
+        <span>❀</span>
+    </div>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="side-title">directory</div>
+
+            <div class="side-box">
+
+                <div class="side-box-title">
+                    ❀ MENU
+                </div>
+
+                <div class="side-box-content">
+
+                    <button class="menu-btn active"
+                    onclick="showPage('home',this)">
+                        home
+                    </button>
+
+                    <button class="menu-btn"
+                    onclick="showPage('ng',this)">
+                        NG
+                    </button>
+
+                    <button class="menu-btn"
+                    onclick="showPage('consider',this)">
+                        배려리스트
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="side-title">for you</div>
+
+            <div class="side-box">
+
+                <div class="side-box-title">
+                    ❀ INFORMATION
+                </div>
+
+                <div class="side-box-content"
+                style="font-size:11px;line-height:2;color:#92877d;">
+
+                    ♡ please read NG<br>
+                    ♡ respect each other<br>
+                    ♡ thank you for visiting
+
+                </div>
+
+            </div>
+
+            <div class="side-box">
+
+                <div class="side-box-title">
+                    ❀ SPECIAL
+                </div>
+
+                <div class="side-box-content"
+                style="text-align:center;padding:15px;">
+
+                    <div style="font-size:25px;color:#b4ad92;">
+                        ♡
+                    </div>
+
+                    <span style="font-size:11px;">
+                        made with love
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main">
+
+            <div class="banner">
+                <div class="banner-title">
+                    my little archive.
+                </div>
+            </div>
+
+            <div class="clock" id="clock">
+                00:00:00
+            </div>
+
+
+            <!-- HOME -->
+
+            <section class="page active" id="home">
+
+                <div class="section-title">
+                    about me
+                </div>
+
+                <div class="text-box">
+
+                    1T1D 지향 (하지만 무조건 다 인 건 아니고...),
+                    극온리 성향, 겹드림 안 받습니다!
+
+                    <br><br>
+
+                    도쿄 리벤저스 천축 쿠로카와 이자나의 드림입니다.
+                    짝사랑 관계 → 쌍방인 느낌의 드림을 하고 있어요.
+
+                    <br><br>
+
+                    교류를 좋아하고 특히 같이 커미션 넣는 것도 좋아해요!
+                    혹은 늘 주접이라던가... 커미션도 자주 올리고
+                    그런 쪽이 계정의 방향성입니다.
+
+                    <br><br>
+
+                    개인적 이유로 원신의 방랑자 드림은 안 받습니다!
+                    (미리 뮤트나 기능 사용합니다...)
+
+                    <br><br>
+
+                    쿠로카와 이자나 드림 제외로 하이타니 린도
+                    드림도 하고 있습니다 uwu
+
+                </div>
+
+                <div class="home-decoration">
+                    ✿ ♡ ✿
+                </div>
+
+            </section>
+
+
+            <!-- NG -->
+
+            <section class="page" id="ng">
+
+                <div class="section-title">
+                    NG LIST
+                </div>
+
+                <div class="text-box">
+
+                    <div class="ng-item">
+                        드림 지우기.
+                    </div>
+
+                    <div class="ng-item">
+                        싸불.
+                    </div>
+
+                    <div class="ng-item">
+                        겹견제.
+                    </div>
+
+                    <div class="ng-item">
+                        공식의 서사무시.
+                    </div>
+
+                    <div class="ng-item">
+                        겹드림.
+                    </div>
+
+                    <div class="ng-item">
+                        커미션으로 애정판단.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONSIDERATION -->
+
+            <section class="page" id="consider">
+
+                <div class="section-title">
+                    consideration list
+                </div>
+
+                <div class="text-box">
+                    소중하신 분이 계셔 더 이상 안 받는
+                    드림 목록입니다.
+                </div>
+
+                <div class="sub-title">
+                    ♡ DREAM CONSIDERATION
+                </div>
+
+                <div class="consider-item">
+                    작두 - 미대감
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <div class="footer">
+        ♡ MADE WITH LOVE · THANK YOU FOR VISITING ♡
+    </div>
+
+</div>
+</div>
+
+
+<script>
+
+function showPage(id, button) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    button.classList.add('active');
+
+    const selectedPage = document.getElementById(id);
+
+    selectedPage.classList.remove('active');
+
+    void selectedPage.offsetWidth;
+
+    selectedPage.classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+}
+
+
+// CLOCK
+
+function updateClock() {
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    document.getElementById('clock').textContent = time;
+
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+</script>
+
+</body>
+</html>
